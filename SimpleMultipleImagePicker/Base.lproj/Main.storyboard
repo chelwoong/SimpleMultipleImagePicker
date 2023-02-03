@@ -25,8 +25,33 @@
                                     <action selector="didPickImagesButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bY6-ET-xkf"/>
                                 </connections>
                             </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JF9-hu-9Qa" secondAttribute="trailing" constant="20" id="2DM-KI-7oa"/>
+                            <constraint firstItem="JF9-hu-9Qa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="7w9-vC-2JW"/>
+                            <constraint firstItem="JF9-hu-9Qa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="ETJ-bY-nNW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="uzB-p5-tGM" id="2jh-Yg-gLh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
+        </scene>
+        <!--Picker View Controller-->
+        <scene sceneID="g2u-Tf-uF3">
+            <objects>
+                <viewController storyboardIdentifier="PickerViewController" id="ek3-9q-0hE" customClass="PickerViewController" customModule="SimpleMultipleImagePicker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X5k-hk-UEE">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uzB-p5-tGM">
-                                <rect key="frame" x="0.0" y="154" width="393" height="664"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eUt-wg-paS">
                                     <size key="itemSize" width="128" height="128"/>
@@ -40,7 +65,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Skx-Bw-HIS">
                                             <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FP4-nw-wRG">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -60,25 +85,23 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="96R-dr-16F"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JF9-hu-9Qa" secondAttribute="trailing" constant="20" id="2DM-KI-7oa"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uzB-p5-tGM" secondAttribute="trailing" id="4T5-6x-0Ag"/>
-                            <constraint firstItem="JF9-hu-9Qa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="7w9-vC-2JW"/>
-                            <constraint firstItem="JF9-hu-9Qa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="ETJ-bY-nNW"/>
-                            <constraint firstItem="uzB-p5-tGM" firstAttribute="top" secondItem="JF9-hu-9Qa" secondAttribute="bottom" constant="30" id="Jwd-j7-qSz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uzB-p5-tGM" secondAttribute="bottom" id="gS1-vE-vbZ"/>
-                            <constraint firstItem="uzB-p5-tGM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nYq-2y-KzJ"/>
+                            <constraint firstItem="uzB-p5-tGM" firstAttribute="trailing" secondItem="96R-dr-16F" secondAttribute="trailing" id="FAO-i8-5tg"/>
+                            <constraint firstItem="96R-dr-16F" firstAttribute="bottom" secondItem="uzB-p5-tGM" secondAttribute="bottom" id="dR0-aq-g69"/>
+                            <constraint firstItem="uzB-p5-tGM" firstAttribute="leading" secondItem="96R-dr-16F" secondAttribute="leading" id="fyA-gl-0zA"/>
+                            <constraint firstItem="uzB-p5-tGM" firstAttribute="top" secondItem="96R-dr-16F" secondAttribute="top" id="jwm-NC-Jg0"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Tq4-Xx-hDm"/>
                     <connections>
-                        <outlet property="collectionView" destination="uzB-p5-tGM" id="2jh-Yg-gLh"/>
+                        <outlet property="collectionView" destination="uzB-p5-tGM" id="vhB-AG-IW5"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fk2-kg-YpL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="886" y="-27"/>
         </scene>
     </scenes>
     <resources>

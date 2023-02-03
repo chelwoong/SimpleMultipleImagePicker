@@ -16,6 +16,7 @@
 		3660F846298BE58B00086CF9 /* SimpleMultipleImagePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3660F845298BE58B00086CF9 /* SimpleMultipleImagePickerTests.swift */; };
 		3660F850298BE58B00086CF9 /* SimpleMultipleImagePickerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3660F84F298BE58B00086CF9 /* SimpleMultipleImagePickerUITests.swift */; };
 		3660F852298BE58B00086CF9 /* SimpleMultipleImagePickerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3660F851298BE58B00086CF9 /* SimpleMultipleImagePickerUITestsLaunchTests.swift */; };
+		3660F85F298CDB8900086CF9 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3660F85E298CDB8900086CF9 /* PickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3660F84B298BE58B00086CF9 /* SimpleMultipleImagePickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMultipleImagePickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3660F84F298BE58B00086CF9 /* SimpleMultipleImagePickerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMultipleImagePickerUITests.swift; sourceTree = "<group>"; };
 		3660F851298BE58B00086CF9 /* SimpleMultipleImagePickerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMultipleImagePickerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3660F85E298CDB8900086CF9 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				3660F82E298BE58900086CF9 /* AppDelegate.swift */,
 				3660F830298BE58900086CF9 /* SceneDelegate.swift */,
 				3660F832298BE58900086CF9 /* ViewController.swift */,
+				3660F85E298CDB8900086CF9 /* PickerViewController.swift */,
 				3660F834298BE58900086CF9 /* Main.storyboard */,
 				3660F837298BE58B00086CF9 /* Assets.xcassets */,
 				3660F839298BE58B00086CF9 /* LaunchScreen.storyboard */,
@@ -260,6 +263,7 @@
 			files = (
 				3660F833298BE58900086CF9 /* ViewController.swift in Sources */,
 				3660F82F298BE58900086CF9 /* AppDelegate.swift in Sources */,
+				3660F85F298CDB8900086CF9 /* PickerViewController.swift in Sources */,
 				3660F831298BE58900086CF9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
