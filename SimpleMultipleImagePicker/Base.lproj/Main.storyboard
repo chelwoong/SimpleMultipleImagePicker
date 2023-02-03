@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,15 +25,56 @@
                                     <action selector="didPickImagesButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bY6-ET-xkf"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uzB-p5-tGM">
+                                <rect key="frame" x="0.0" y="154" width="393" height="664"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eUt-wg-paS">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AlbumImageCollectionViewCell" id="NTA-RY-Stw" customClass="AlbumImageCollectionViewCell" customModule="SimpleMultipleImagePicker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Skx-Bw-HIS">
+                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FP4-nw-wRG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="FP4-nw-wRG" firstAttribute="leading" secondItem="Skx-Bw-HIS" secondAttribute="leading" id="73f-Ck-g11"/>
+                                                <constraint firstAttribute="bottom" secondItem="FP4-nw-wRG" secondAttribute="bottom" id="9y6-y8-Kt6"/>
+                                                <constraint firstAttribute="trailing" secondItem="FP4-nw-wRG" secondAttribute="trailing" id="dTK-zh-Y72"/>
+                                                <constraint firstItem="FP4-nw-wRG" firstAttribute="top" secondItem="Skx-Bw-HIS" secondAttribute="top" id="h75-Gs-3Kq"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="albumImageView" destination="FP4-nw-wRG" id="Rhy-Sx-nYg"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JF9-hu-9Qa" secondAttribute="trailing" constant="20" id="2DM-KI-7oa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uzB-p5-tGM" secondAttribute="trailing" id="4T5-6x-0Ag"/>
                             <constraint firstItem="JF9-hu-9Qa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="7w9-vC-2JW"/>
                             <constraint firstItem="JF9-hu-9Qa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="ETJ-bY-nNW"/>
+                            <constraint firstItem="uzB-p5-tGM" firstAttribute="top" secondItem="JF9-hu-9Qa" secondAttribute="bottom" constant="30" id="Jwd-j7-qSz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uzB-p5-tGM" secondAttribute="bottom" id="gS1-vE-vbZ"/>
+                            <constraint firstItem="uzB-p5-tGM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nYq-2y-KzJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="uzB-p5-tGM" id="2jh-Yg-gLh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
