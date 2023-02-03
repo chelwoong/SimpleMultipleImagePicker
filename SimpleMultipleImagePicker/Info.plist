@@ -21,5 +21,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>모든 사진의 권한이 필요합니다.</string>
 </dict>
 </plist>
