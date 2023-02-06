@@ -31,6 +31,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
     private func showPicker() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let picker = storyboard.instantiateViewController(withIdentifier: "PickerViewController") as? PickerViewController else { return }
+        picker.modalPresentationStyle = .fullScreen
         picker.delegate = self
         
         self.present(picker, animated: true)
@@ -40,6 +41,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
 extension ViewController: PickerViewControllerDelegate {
     
     func pickerViewController(_ picker: PickerViewController, didFinishPickingWithImages selectedImages: [UIImage]) {
-        
+        print(selectedImages)
+        picker.dismiss(animated: true)
     }
 }

@@ -51,8 +51,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lih-JM-D48">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4D-f0-fIT">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="44"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="didCloseButtonTap:" destination="ek3-9q-0hE" eventType="touchUpInside" id="Qx7-F5-SfR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgV-26-DE2">
+                                        <rect key="frame" x="343.33333333333331" y="0.0" width="49.666666666666686" height="44"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="didCompleteButtonTap:" destination="ek3-9q-0hE" eventType="touchUpInside" id="VlR-U0-rYT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="sgV-26-DE2" firstAttribute="top" secondItem="Lih-JM-D48" secondAttribute="top" id="6Rc-px-Jtf"/>
+                                    <constraint firstItem="d4D-f0-fIT" firstAttribute="leading" secondItem="Lih-JM-D48" secondAttribute="leading" id="8TO-pC-vUe"/>
+                                    <constraint firstItem="d4D-f0-fIT" firstAttribute="top" secondItem="Lih-JM-D48" secondAttribute="top" id="MN8-is-4Kl"/>
+                                    <constraint firstAttribute="trailing" secondItem="sgV-26-DE2" secondAttribute="trailing" id="P0J-pL-dGa"/>
+                                    <constraint firstAttribute="height" constant="44" id="RPq-RT-dql"/>
+                                    <constraint firstAttribute="bottom" secondItem="d4D-f0-fIT" secondAttribute="bottom" id="cNv-z1-mwS"/>
+                                    <constraint firstAttribute="bottom" secondItem="sgV-26-DE2" secondAttribute="bottom" id="ldx-kB-5AS"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uzB-p5-tGM">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eUt-wg-paS">
                                     <size key="itemSize" width="128" height="128"/>
@@ -103,10 +132,13 @@
                         <viewLayoutGuide key="safeArea" id="96R-dr-16F"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Lih-JM-D48" firstAttribute="top" secondItem="96R-dr-16F" secondAttribute="top" id="BkJ-nQ-ujh"/>
                             <constraint firstItem="uzB-p5-tGM" firstAttribute="trailing" secondItem="96R-dr-16F" secondAttribute="trailing" id="FAO-i8-5tg"/>
+                            <constraint firstItem="96R-dr-16F" firstAttribute="trailing" secondItem="Lih-JM-D48" secondAttribute="trailing" id="Mka-Zd-zvR"/>
+                            <constraint firstItem="uzB-p5-tGM" firstAttribute="top" secondItem="Lih-JM-D48" secondAttribute="bottom" id="NpM-iE-B4c"/>
                             <constraint firstItem="96R-dr-16F" firstAttribute="bottom" secondItem="uzB-p5-tGM" secondAttribute="bottom" id="dR0-aq-g69"/>
                             <constraint firstItem="uzB-p5-tGM" firstAttribute="leading" secondItem="96R-dr-16F" secondAttribute="leading" id="fyA-gl-0zA"/>
-                            <constraint firstItem="uzB-p5-tGM" firstAttribute="top" secondItem="96R-dr-16F" secondAttribute="top" id="jwm-NC-Jg0"/>
+                            <constraint firstItem="Lih-JM-D48" firstAttribute="leading" secondItem="96R-dr-16F" secondAttribute="leading" id="yTe-CA-ouy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Tq4-Xx-hDm"/>
@@ -116,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fk2-kg-YpL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="886" y="-27"/>
+            <point key="canvasLocation" x="884.73282442748086" y="-27.464788732394368"/>
         </scene>
     </scenes>
     <resources>

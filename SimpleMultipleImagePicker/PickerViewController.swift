@@ -65,6 +65,20 @@ class PickerViewController: UIViewController {
         
         return result
     }
+    
+    @IBAction
+    private func didCloseButtonTap(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction
+    private func didCompleteButtonTap(_ sender: UIButton) {
+        let selectedImages = self.selectedIndexPath.compactMap { indexPath -> UIImage? in
+            guard 0..<self.albumImages.count ~= indexPath.item else { return nil }
+            return self.albumImages[indexPath.item]
+        }
+        self.delegate?.pickerViewController(self, didFinishPickingWithImages: selectedImages)
+    }
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
