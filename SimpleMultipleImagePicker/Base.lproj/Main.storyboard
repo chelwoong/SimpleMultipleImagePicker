@@ -77,7 +77,10 @@
                                                         <constraint firstAttribute="width" constant="30" id="DIY-Ct-Em4"/>
                                                         <constraint firstAttribute="height" constant="30" id="mxk-Kn-NAR"/>
                                                     </constraints>
-                                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain"/>
+                                                    <connections>
+                                                        <action selector="didSelectButtonTap:" destination="NTA-RY-Stw" eventType="touchUpInside" id="HwQ-A4-DeL"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -91,6 +94,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="albumImageView" destination="FP4-nw-wRG" id="Rhy-Sx-nYg"/>
+                                            <outlet property="selectButton" destination="ee6-dZ-jwg" id="UeJ-9B-Wqq"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

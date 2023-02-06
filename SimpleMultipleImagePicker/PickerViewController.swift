@@ -13,6 +13,8 @@ class PickerViewController: UIViewController {
     private var albumImages: [UIImage] = []
     private var albums: [PHAssetCollection] = []
     
+    private var selectedIndexPath = Set<IndexPath>()
+    
     var delegate: PickerViewControllerDelegate?
     
     override func viewDidLoad() {
@@ -82,8 +84,17 @@ extension PickerViewController: UICollectionViewDataSource, UICollectionViewDele
         
         let image = self.albumImages[indexPath.item]
         
-        cell.configure(image: image)
-        cell.backgroundColor = .orange
+        cell.configure(image: image) { [weak self] in
+            guard let self = self else { return }
+            let isSelected = self.selectedIndexPath.contains(indexPath)
+            if isSelected {
+                cell.updateToDeselected()
+                self.selectedIndexPath.remove(indexPath)
+            } else {
+                cell.updateToSelected()
+                self.selectedIndexPath.insert(indexPath)
+            }
+        }
         return cell
     }
     
@@ -103,9 +114,35 @@ extension PickerViewController: UICollectionViewDataSource, UICollectionViewDele
 class AlbumImageCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var albumImageView: UIImageView!
+    @IBOutlet weak var selectButton: UIButton!
     
-    func configure(image: UIImage) {
+    var didSelect: (() -> Void)?
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.albumImageView.image = nil
+        self.updateToDeselected()
+    }
+    
+    func configure(image: UIImage, didSelect: @escaping (() -> Void)) {
         self.albumImageView.contentMode = .scaleAspectFill
         self.albumImageView.image = image
+        
+        self.didSelect = didSelect
+    }
+    
+    @IBAction
+    private func didSelectButtonTap(_ sender: UIButton) {
+        self.didSelect?()
+    }
+    
+    func updateToSelected() {
+        self.selectButton.isSelected = true
+        self.selectButton.backgroundColor = .blue
+    }
+    
+    func updateToDeselected() {
+        self.selectButton.isSelected = false
+        self.selectButton.backgroundColor = .clear
     }
 }
