@@ -68,6 +68,9 @@ class PickerViewController: UIViewController {
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension PickerViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    private var numberOfColumns: CGFloat { 3 }
+    private var interitemSpacing: CGFloat { 20 }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.albumImages.count
     }
@@ -80,7 +83,19 @@ extension PickerViewController: UICollectionViewDataSource, UICollectionViewDele
         let image = self.albumImages[indexPath.item]
         
         cell.configure(image: image)
+        cell.backgroundColor = .orange
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let totalSpacing: CGFloat = self.interitemSpacing * (self.numberOfColumns - 1)
+        let width = (collectionView.bounds.width - totalSpacing) / self.numberOfColumns
+        let height = width
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return self.interitemSpacing
     }
 }
 

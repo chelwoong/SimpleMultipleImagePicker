@@ -17,21 +17,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
     
     @IBAction
     private func didPickImagesButtonTap(_ sender: UIButton) {
-        PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] state in
-            guard let self = self else { return }
-            switch state {
-            case .authorized:
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized:
+            DispatchQueue.main.async {
                 self.showPicker()
-            default:
-                print(state)
             }
+        default:
+            print(status)
         }
     }
     
     private func showPicker() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let picker = storyboard.instantiateViewController(withIdentifier: "PickerViewController") as? PickerViewController else { return }
+        picker.modalPresentationStyle = .fullScreen
         picker.delegate = self
+        
         self.present(picker, animated: true)
     }
 }

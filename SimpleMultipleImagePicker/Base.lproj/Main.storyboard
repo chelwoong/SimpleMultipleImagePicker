@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -70,11 +71,21 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FP4-nw-wRG">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ee6-dZ-jwg">
+                                                    <rect key="frame" x="98" y="0.0" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="DIY-Ct-Em4"/>
+                                                        <constraint firstAttribute="height" constant="30" id="mxk-Kn-NAR"/>
+                                                    </constraints>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="ee6-dZ-jwg" firstAttribute="top" secondItem="Skx-Bw-HIS" secondAttribute="top" id="3cb-KT-BPg"/>
                                                 <constraint firstItem="FP4-nw-wRG" firstAttribute="leading" secondItem="Skx-Bw-HIS" secondAttribute="leading" id="73f-Ck-g11"/>
                                                 <constraint firstAttribute="bottom" secondItem="FP4-nw-wRG" secondAttribute="bottom" id="9y6-y8-Kt6"/>
                                                 <constraint firstAttribute="trailing" secondItem="FP4-nw-wRG" secondAttribute="trailing" id="dTK-zh-Y72"/>
+                                                <constraint firstAttribute="trailing" secondItem="ee6-dZ-jwg" secondAttribute="trailing" id="eHk-EK-bcQ"/>
                                                 <constraint firstItem="FP4-nw-wRG" firstAttribute="top" secondItem="Skx-Bw-HIS" secondAttribute="top" id="h75-Gs-3Kq"/>
                                             </constraints>
                                         </collectionViewCellContentView>
