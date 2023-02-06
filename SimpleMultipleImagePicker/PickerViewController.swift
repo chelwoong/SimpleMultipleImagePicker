@@ -69,7 +69,7 @@ class PickerViewController: UIViewController {
 extension PickerViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     private var numberOfColumns: CGFloat { 3 }
-    private var interitemSpacing: CGFloat { 20 }
+    private var interitemSpacing: CGFloat { 10 }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.albumImages.count
@@ -89,7 +89,7 @@ extension PickerViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let totalSpacing: CGFloat = self.interitemSpacing * (self.numberOfColumns - 1)
-        let width = (collectionView.bounds.width - totalSpacing) / self.numberOfColumns
+        let width = floor((collectionView.bounds.width - totalSpacing) / self.numberOfColumns)
         let height = width
         return CGSize(width: width, height: height)
     }
