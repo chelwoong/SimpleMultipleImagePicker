@@ -20,8 +20,10 @@ class PickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupCollectionView()
-        self.albumImages = self.loadImages()
-        self.collectionView.reloadData()
+        Task {
+            self.albumImages = await self.loadImages()
+            self.collectionView.reloadData()
+        }
     }
     
     private func setupCollectionView() {
@@ -29,8 +31,8 @@ class PickerViewController: UIViewController {
         self.collectionView.delegate = self
     }
     
-    private func loadImages() -> [UIImage] {
-        let albums = self.loadAlbumsList()
+    private func loadImages() async -> [UIImage] {
+        let albums = await self.loadAlbumsList()
         self.albums = albums
         
         var images: [UIImage] = []
@@ -47,7 +49,7 @@ class PickerViewController: UIViewController {
         return images
     }
     
-    private func loadAlbumsList() -> [PHAssetCollection] {
+    private func loadAlbumsList() async -> [PHAssetCollection] {
         var result: [PHAssetCollection] = [PHAssetCollection]()
         
         let options = PHFetchOptions()
