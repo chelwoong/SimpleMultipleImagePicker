@@ -22,7 +22,9 @@ class PickerViewController: UIViewController {
         self.setupCollectionView()
         Task {
             self.albumImages = await self.loadImages()
-            self.collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
     
@@ -32,40 +34,59 @@ class PickerViewController: UIViewController {
     }
     
     private func loadImages() async -> [UIImage] {
+        var result = [UIImage]()
         let albums = await self.loadAlbumsList()
-        self.albums = albums
+        let assets = await self.loadAssets(from: albums)
         
-        var images: [UIImage] = []
-        albums.forEach { album in
-            let assets = PHAsset.fetchAssets(in: album, options: nil)
-            assets.enumerateObjects { asset, _, _ in
-                PHCachingImageManager.default().requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFit, options: nil) { image, info in
-                    if let image = image {
-                        images.append(image)
-                    }
-                }
+        for asset in assets {
+            if let image = await self.loadImage(asset: asset, size: PHImageManagerMaximumSize) {
+                result.append(image)
             }
         }
-        return images
+        
+        return result
     }
     
     private func loadAlbumsList() async -> [PHAssetCollection] {
         var result: [PHAssetCollection] = [PHAssetCollection]()
         
-        let options = PHFetchOptions()
-        let cameraRoll = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: options)
-        let favoriteList = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
-        let albumList = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: nil)
+        async let smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: nil)
+        async let photoStreamAlbums = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: nil)
+        async let userLibrary = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .smartAlbumUserLibrary, options: nil)
         
-        [cameraRoll, favoriteList, albumList].forEach {
+        await [smartAlbums, photoStreamAlbums, userLibrary].forEach {
             $0.enumerateObjects { collection, _, _ in
-                if !result.contains(collection) {
+                if collection.estimatedAssetCount > 0, !result.contains(collection) {
                     result.append(collection)
                 }
             }
         }
         
         return result
+    }
+    
+    private func loadAssets(from albums: [PHAssetCollection]) async -> [PHAsset] {
+        var result = [PHAsset]()
+        let fetchOptions = PHFetchOptions()
+        for album in albums {
+            async let asset = PHAsset.fetchAssets(in: album, options: fetchOptions)
+            await asset.enumerateObjects { asset, _, _ in
+                result.append(asset)
+            }
+        }
+        return result
+    }
+    
+    private func loadImage(asset: PHAsset, size: CGSize, resizeMode: PHImageRequestOptionsResizeMode = .exact, deliveryMode: PHImageRequestOptionsDeliveryMode? = nil) async -> UIImage? {
+        return await withCheckedContinuation { continuation in
+            let option = PHImageRequestOptions()
+            option.isSynchronous = true
+            PHCachingImageManager.default().requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFit, options: option) { image, info in
+                if let image = image {
+                    continuation.resume(returning: image)
+                }
+            }
+        }
     }
     
     @IBAction

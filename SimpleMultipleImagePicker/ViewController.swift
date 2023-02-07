@@ -17,15 +17,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
     
     @IBAction
     private func didPickImagesButtonTap(_ sender: UIButton) {
-        let status = PHPhotoLibrary.authorizationStatus()
-        switch status {
-        case .authorized:
-            DispatchQueue.main.async {
-                self.showPicker()
+        Task {
+            async let status = PHPhotoLibrary.authorizationStatus()
+            switch await status {
+            case .authorized:
+                DispatchQueue.main.async {
+                    self.showPicker()
+                }
+            case .notDetermined:
+                PHPhotoLibrary.requestAuthorization { status in
+                    if status == .authorized {
+                        DispatchQueue.main.async {
+                            self.showPicker()
+                        }
+                    } else {
+                        // TODO: 권한 없음
+                        return
+                    }
+                }
+            default:
+                await print(status)
             }
-        default:
-            print(status)
         }
+    }
+    
+    private func checkPhotoLibraryAuthorization() async {
+        
     }
     
     private func showPicker() {
